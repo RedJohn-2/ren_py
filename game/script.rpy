@@ -16,4 +16,12 @@ label start:
     call prologue_3_scene_1
     call prologue_4_scene_1
 
+    call chapter_1_1
+    call chapter_1_2
+    call chapter_1_3
+    call chapter_1_4
+    call chapter_2_1
+    call chapter_2_2
+    call chapter_2_3
+
     return

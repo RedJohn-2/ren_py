@@ -15,3 +15,21 @@ define h = Character('Хелена Куросава', color="#ff8c00")
 define sy = Character('Сильвия Киба', color="#50c878")
 define mk = Character('Микки', color="#da70d6")
 define pred = Character('Предводитель', color="#ff0000")
+
+define zombie = Character('Зомби', color="#556b2f")
+define skeleton = Character('Скелет', color="#d4c5a9")
+define genro = Character('Демон Генро', color="#ffd700")
+define guard = Character('Охранник', color="#8b7355")
+define girl_narrator = Character('???', color="#ffffff")
+
+default companion = None
+default has_lamp = False
+default has_diary = False
+default has_map = False
+default has_medkit = False
+default has_fire_extinguisher = False
+default has_key = False
+default girl_alive = True
+default leon_injured = False
+default dodges_left = 0
+default mask_broken = False
