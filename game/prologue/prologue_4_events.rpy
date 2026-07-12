@@ -1,7 +1,7 @@
-# Пролог 4: Актовый зал
+# Пролог 4: События
 # Основан на файле "Диалоги/Пролог 4 Актовый зал.md"
 
-label prologue_4_scene_1:
+label pro_4_assembly_setup:
     scene bg assembly_hall
     with dissolve
 
@@ -154,10 +154,10 @@ label prologue_4_scene_1:
 
     n "Леон отправляется в кабинет театрального кружка"
 
-    jump prologue_4_scene_2
+    return
 
 
-label prologue_4_scene_2:
+label pro_4_theater_intro:
     scene bg theater_room
     with dissolve
 
@@ -180,14 +180,53 @@ label prologue_4_scene_2:
 
     n "Леон решает неспешно проверить самые очевидные места"
 
-    call prologue_4_search_first
+    return
 
-    n "Шинна молча посмотрела на Леона."
-    n "Очень молча."
-    n "Леон решил проверить менее очевидные места."
 
-    call prologue_4_search_second
+label pro_4_search_desk:
+    n "На столе лежат карандаши, ручки и стопка сценариев."
+    n "Ключа нет."
+    n "Зато Леон выяснил, что в прошлом спектакле дерево играли сразу три человека."
+    return
 
+
+label pro_4_search_drawers:
+    n "В ящиках обнаружились документы, реквизитные ведомости и список ролей."
+    n "Ключа нет."
+    n "Судя по финансовому отчету, бюджет одной из постановок составил три миски риса и благодарность от завуча."
+    return
+
+
+label pro_4_search_windowsill:
+    n "На подоконнике стоит проектор и несколько горшков с цветами."
+    n "Ключей нет."
+    n "Зато один из кактусов выглядит подозрительно угрожающе."
+    return
+
+
+label pro_4_search_flowers:
+    n "Леон проверяет плошки гортензий и пионов."
+    n "Ключа в них, само собой, нет."
+    n "Зато рядом обнаружилась табличка: «Не поливать. Это реквизит»."
+    return
+
+
+label pro_4_search_board:
+    n "На доске сохранилась запись:"
+    n "«Дракон выходит слева. Не перепутать со шкафом»."
+    n "Леон подходит к школьной доске и пытается нащупать ключ наверху"
+    n "Ничего"
+    return
+
+
+label pro_4_search_mat:
+    n "Леон поднимает коврик Welcome рядом со входом."
+    n "Пусто."
+    n "Судя по слою пыли под ним, коврик не двигали со времен основания кружка."
+    return
+
+
+label pro_4_theater_outro:
     show shinna smile
     s "(радостно) Ладно прекрати)"
 
@@ -226,71 +265,10 @@ label prologue_4_scene_2:
 
     n "Герои возвращаются в актовый зал"
 
-    jump prologue_4_scene_3
+    return
 
 
-label prologue_4_search_first:
-    menu:
-        "Осмотреть стол":
-            n "На столе лежат карандаши, ручки и стопка сценариев."
-            n "Ключа нет."
-            n "Зато Леон выяснил, что в прошлом спектакле дерево играли сразу три человека."
-            jump prologue_4_search_first_continue
-
-        "Осмотреть выдвижные ящики":
-            n "В ящиках обнаружились документы, реквизитные ведомости и список ролей."
-            n "Ключа нет."
-            n "Судя по финансовому отчету, бюджет одной из постановок составил три миски риса и благодарность от завуча."
-            jump prologue_4_search_first_continue
-
-        "Осмотреть подоконник":
-            n "На подоконнике стоит проектор и несколько горшков с цветами."
-            n "Ключей нет."
-            n "Зато один из кактусов выглядит подозрительно угрожающе."
-            jump prologue_4_search_first_continue
-
-
-label prologue_4_search_first_continue:
-    menu:
-        "Продолжить поиски":
-            jump prologue_4_search_first
-
-        "Хватит, ключа здесь нет":
-            return
-
-
-label prologue_4_search_second:
-    menu:
-        "Проверить плошки цветов":
-            n "Леон проверяет плошки гортензий и пионов."
-            n "Ключа в них, само собой, нет."
-            n "Зато рядом обнаружилась табличка: «Не поливать. Это реквизит»."
-            jump prologue_4_search_second_continue
-
-        "Осмотреть школьную доску":
-            n "На доске сохранилась запись:"
-            n "«Дракон выходит слева. Не перепутать со шкафом»."
-            n "Леон подходит к школьной доске и пытается нащупать ключ наверху"
-            n "Ничего"
-            jump prologue_4_search_second_continue
-
-        "Заглянуть под коврик у входа":
-            n "Леон поднимает коврик Welcome рядом со входом."
-            n "Пусто."
-            n "Судя по слою пыли под ним, коврик не двигали со времен основания кружка."
-            jump prologue_4_search_second_continue
-
-
-label prologue_4_search_second_continue:
-    menu:
-        "Продолжить поиски":
-            jump prologue_4_search_second
-
-        "Здесь тоже ничего нет":
-            return
-
-
-label prologue_4_scene_3:
+label pro_4_assembly_lockpick:
     scene bg assembly_hall
     with dissolve
 
@@ -320,10 +298,10 @@ label prologue_4_scene_3:
 
     n "Группа проходит в подсобку"
 
-    jump prologue_4_scene_4
+    return
 
 
-label prologue_4_scene_4:
+label pro_4_storage_room:
     scene bg storage_room
     with dissolve
 

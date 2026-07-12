@@ -291,3 +291,4 @@ action Play("music", "track.ogg")
 - Text in `_()` for translatable strings
 - Russian locale — keep UI text in Russian
 - All custom game logic goes in `script.rpy` or new `.rpy` files in `game/`
+- Do not write coments 

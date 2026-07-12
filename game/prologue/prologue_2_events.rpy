@@ -1,7 +1,7 @@
-# Пролог 2: Спортивный зал
+# Пролог 2: События
 # Основан на файле "Диалоги/Пролог 2 Спортивный зал.md"
 
-label prologue_2_scene_1:
+label pro_2_sylvia_training:
     scene bg gym
     with dissolve
 
@@ -32,9 +32,10 @@ label prologue_2_scene_1:
     sy "(И думаю стоит еще прийти на выходных)"
     sy "(А теперь принять душ и переодеться)"
 
-    jump prologue_2_scene_2
+    return
 
-label prologue_2_scene_2:
+
+label pro_2_locker_room:
     scene bg locker_room
     with dissolve
 

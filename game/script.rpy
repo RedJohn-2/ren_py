@@ -11,10 +11,10 @@ define e = Character('Эйлин', color="#c8ffc8")
 
 # Игра начинается здесь:
 label start:
-    call prologue_1_scene_1
-    call prologue_2_scene_1
-    call prologue_3_scene_1
-    call prologue_4_scene_1
+    call prologue_1
+    call prologue_2
+    call prologue_3
+    call prologue_4
 
     call chapter_1_1
     call chapter_1_2

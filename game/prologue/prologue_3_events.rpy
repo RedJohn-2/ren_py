@@ -1,7 +1,7 @@
-# Пролог 3: Коридор
+# Пролог 3: События
 # Основан на файле "Диалоги/Пролог 3 Коридор.md"
 
-label prologue_3_scene_1:
+label pro_3_corridor_meeting:
     scene bg corridor
     with dissolve
 

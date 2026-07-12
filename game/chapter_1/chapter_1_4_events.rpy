@@ -4,10 +4,8 @@
 
 define girl = Character('Девушка', color="#ffffff")
 
-default dodges_left = 0
 default default_girl_strength = 2
 default default_girl_empathy = 2
-default mask_broken = False
 
 
 label ch1_4_scene1_gen_room:
