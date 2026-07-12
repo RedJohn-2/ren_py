@@ -1,28 +1,6 @@
 # Глава 1.1: События
 # Основана на файле "Диалоги/Глава 1.1.md"
 
-init python:
-    companion_chars = {
-        'alice': a,
-        'mari': m,
-        'helena': h,
-        'shinna': s,
-        'sylvia': sy,
-    }
-
-    def c_say(text):
-        char = companion_chars.get(companion)
-        if char:
-            char(text)
-
-    def c_show(emotion="smile"):
-        if not companion:
-            return
-        tag = companion
-        em = emotion
-        img = tag + " " + em
-        renpy.show(img)
-
 label ch1_1_run_to_corridor:
     scene bg corridor
     with dissolve

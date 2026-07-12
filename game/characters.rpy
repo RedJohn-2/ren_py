@@ -33,3 +33,59 @@ default girl_alive = True
 default leon_injured = False
 default dodges_left = 0
 default mask_broken = False
+
+init python:
+    companion_chars = {
+        "shinna": s,
+        "alice": a,
+        "mari": m,
+        "helena": h,
+        "sylvia": sy,
+    }
+
+    def c_say(text):
+        char = companion_chars.get(companion, n)
+        char(text)
+
+    companion_sprites = {
+        "shinna": {
+            "smile": "shinna smile",
+            "frown": "shinna frown",
+            "closed_smile": "shinna closed smile",
+            "closed_frown": "shinna closed frown",
+        },
+        "alice": {
+            "smile": "alice smile",
+            "frown": "alice frown",
+            "closed_smile": "alice closed smile",
+            "closed_frown": "alice closed frown",
+        },
+        "mari": {
+            "smile": "mari smile",
+            "frown": "mari frown",
+            "closed_smile": "mari smile eyesclosed",
+            "closed_frown": "mari frown eyesclosed",
+        },
+        "helena": {
+            "smile": "helena smile",
+            "frown": "helena frown",
+            "closed_smile": "helena smile closedeyes",
+            "closed_frown": "helena frown closedeyes",
+        },
+        "sylvia": {
+            "smile": "sylvia smile",
+            "frown": "sylvia frown",
+            "closed_smile": "sylvia closed smile",
+            "closed_frown": "sylvia closed frown",
+        },
+    }
+
+    def c_show(emotion="smile"):
+        if not companion:
+            return
+        emap = companion_sprites.get(companion)
+        if not emap:
+            return
+        img = emap.get(emotion)
+        if img:
+            renpy.show(img)

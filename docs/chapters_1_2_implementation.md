@@ -73,23 +73,23 @@
 
 ## Недостающие изображения (нужно добавить 15 фонов)
 
-| Фон | `.rpy` файл (строка) |
-|-----|---------------------|
-| `bg biology` | `chapter_1_2_events.rpy:2` |
-| `bg laboratory` | `chapter_1_2_events.rpy:53` |
-| `bg women_toilet` | `chapter_1_2_events.rpy:119` |
-| `bg robotics` | `chapter_1_2_events.rpy:219` |
-| `bg wardrobe` | `chapter_1_2_events.rpy:303` |
-| `bg men_toilet` | `chapter_1_2_events.rpy:382` |
-| `bg guard_post` | `chapter_1_3_events.rpy:62` |
-| `bg archive` | `chapter_1_3_events.rpy:143` |
-| `bg generator_room` | `chapter_1_3_events.rpy:279` |
-| `bg medbay` | `chapter_1_4_events.rpy:611` |
-| `bg literature` | `chapter_2_2_events.rpy:5` |
-| `bg music` | `chapter_2_2_events.rpy:55` |
-| `bg drafting` | `chapter_2_2_events.rpy:130` |
-| `bg janitor` | `chapter_2_2_events.rpy:186` |
-| `bg workshop` | `chapter_2_2_events.rpy:227` |
+| Фон (англ.) | Локация (рус.) | `.rpy` файл (строка) |
+|-------------|----------------|---------------------|
+| `bg biology` | Кабинет биологии | `chapter_1_2_events.rpy:2` |
+| `bg laboratory` | Лаборантская | `chapter_1_2_events.rpy:53` |
+| `bg women_toilet` | Женский туалет | `chapter_1_2_events.rpy:119` |
+| `bg robotics` | Кабинет кружка робототехники | `chapter_1_2_events.rpy:219` |
+| `bg wardrobe` | Гардероб | `chapter_1_2_events.rpy:303` |
+| `bg men_toilet` | Мужской туалет | `chapter_1_2_events.rpy:382` |
+| `bg guard_post` | Пост охраны | `chapter_1_3_events.rpy:62` |
+| `bg archive` | Архив | `chapter_1_3_events.rpy:143` |
+| `bg generator_room` | Генераторная | `chapter_1_3_events.rpy:279` |
+| `bg medbay` | Медпункт | `chapter_1_4_events.rpy:611` |
+| `bg literature` | Кабинет литературы | `chapter_2_2_events.rpy:5` |
+| `bg music` | Кабинет музыки | `chapter_2_2_events.rpy:55` |
+| `bg drafting` | Кабинет черчения | `chapter_2_2_events.rpy:130` |
+| `bg janitor` | Шваберная | `chapter_2_2_events.rpy:186` |
+| `bg workshop` | Мастерская | `chapter_2_2_events.rpy:227` |
 
 Формат: `bg name.jpg` / `.png` / `.webp` в `game/images/`.  
 Имена автоматически регистрируются Ren'Py (пробелы в имени фона заменяются на подчёркивания в файле).

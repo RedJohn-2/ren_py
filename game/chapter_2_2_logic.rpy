@@ -1,15 +1,6 @@
 # Chapter 2.2: Exploration logic
 # Основан на файле "Диалоги/Глава 2.2.md"
 
-init python:
-    companion_chars = {
-        "mari": m,
-        "alice": a,
-        "shinna": s,
-        "sylvia": sy,
-        "helena": h,
-    }
-
 label chapter_2_2:
     scene bg corridor
     with dissolve
