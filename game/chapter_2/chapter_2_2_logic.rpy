@@ -31,36 +31,33 @@ label chapter_2_2:
     if has_map:
         $ max_visits = 3
 
-    label ch2_2_explore_loop:
+    while True:
         if rooms_visited >= max_visits:
             n "Вы осмотрели все, что могли в этот заход."
-            jump ch2_2_continue
+            call ch2_2_continue
+            return
 
         menu:
             "Кабинет литературы":
                 call ch2_2_literature
                 $ rooms_visited += 1
-                jump ch2_2_explore_loop
 
             "Кабинет музыки":
                 call ch2_2_music
                 $ rooms_visited += 1
-                jump ch2_2_explore_loop
 
             "Кабинет черчения":
                 call ch2_2_drafting
                 $ rooms_visited += 1
-                jump ch2_2_explore_loop
 
             "Шваберная":
                 call ch2_2_janitor
                 $ rooms_visited += 1
-                jump ch2_2_explore_loop
 
             "Мастерская":
                 call ch2_2_workshop
                 $ rooms_visited += 1
-                jump ch2_2_explore_loop
 
             "Продолжить путь":
-                jump ch2_2_continue
+                call ch2_2_continue
+                return

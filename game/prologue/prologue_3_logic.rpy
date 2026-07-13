@@ -4,4 +4,4 @@
 label prologue_3:
     call pro_3_corridor_meeting
 
-    jump prologue_4
+    return

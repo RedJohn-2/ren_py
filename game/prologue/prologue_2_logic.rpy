@@ -5,4 +5,4 @@ label prologue_2:
     call pro_2_sylvia_training
     call pro_2_locker_room
 
-    jump prologue_3
+    return

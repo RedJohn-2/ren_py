@@ -41,54 +41,45 @@ label chapter_1_2:
     else:
         $ max_rooms = 3
 
-    jump ch1_2_explore_loop
-
-
-label ch1_2_explore_loop:
-    if visited_rooms >= max_rooms:
-        n "Мы осмотрели достаточно кабинетов."
-        call ch1_2_after_explore
-        jump chapter_1_3
-
-    menu:
-        "Какой кабинет осмотреть?"
-
-        "Кабинет биологии" if not visited_biology:
-            $ visited_biology = True
-            $ visited_rooms += 1
-            call ch1_2_biology
-            jump ch1_2_explore_loop
-
-        "Лаборантская" if not visited_laboratory:
-            $ visited_laboratory = True
-            $ visited_rooms += 1
-            call ch1_2_laboratory
-            jump ch1_2_explore_loop
-
-        "Женский туалет" if not visited_women_toilet:
-            $ visited_women_toilet = True
-            $ visited_rooms += 1
-            call ch1_2_women_toilet
-            jump ch1_2_explore_loop
-
-        "Кружок робототехники" if not visited_robotics:
-            $ visited_robotics = True
-            $ visited_rooms += 1
-            call ch1_2_robotics
-            jump ch1_2_explore_loop
-
-        "Гардероб" if not visited_wardrobe:
-            $ visited_wardrobe = True
-            $ visited_rooms += 1
-            call ch1_2_wardrobe
-            jump ch1_2_explore_loop
-
-        "Мужской туалет" if not visited_men_toilet:
-            $ visited_men_toilet = True
-            $ visited_rooms += 1
-            call ch1_2_men_toilet
-            jump ch1_2_explore_loop
-
-        "Пора идти дальше":
+    while True:
+        if visited_rooms >= max_rooms:
+            n "Мы осмотрели достаточно кабинетов."
             call ch1_2_after_explore
-            jump chapter_1_3
+            return
+
+        menu:
+            "Какой кабинет осмотреть?"
+
+            "Кабинет биологии" if not visited_biology:
+                $ visited_biology = True
+                $ visited_rooms += 1
+                call ch1_2_biology
+
+            "Лаборантская" if not visited_laboratory:
+                $ visited_laboratory = True
+                $ visited_rooms += 1
+                call ch1_2_laboratory
+
+            "Женский туалет" if not visited_women_toilet:
+                $ visited_women_toilet = True
+                $ visited_rooms += 1
+                call ch1_2_women_toilet
+
+            "Кружок робототехники" if not visited_robotics:
+                $ visited_robotics = True
+                $ visited_rooms += 1
+                call ch1_2_robotics
+
+            "Гардероб" if not visited_wardrobe:
+                $ visited_wardrobe = True
+                $ visited_rooms += 1
+                call ch1_2_wardrobe
+
+            "Мужской туалет" if not visited_men_toilet:
+                $ visited_men_toilet = True
+                $ visited_rooms += 1
+                call ch1_2_men_toilet
+
+            "Пора идти дальше":
+                call ch1_2_after_explore
+                return

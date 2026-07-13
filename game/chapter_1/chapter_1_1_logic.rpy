@@ -29,4 +29,4 @@ label chapter_1_1:
 
     call ch1_1_unite
 
-    jump chapter_1_2
+    return

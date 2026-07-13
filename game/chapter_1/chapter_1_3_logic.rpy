@@ -21,4 +21,4 @@ label chapter_1_3:
 
     call ch1_3_generator_room
 
-    jump chapter_1_4
+    return

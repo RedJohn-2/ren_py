@@ -280,4 +280,4 @@ label ch2_2_continue:
         sy "Вот я снова здесь..."
         sy "Пора продолжить тренировку."
 
-    jump chapter_2_3
+    return

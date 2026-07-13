@@ -20,6 +20,7 @@ label start:
     call chapter_1_2
     call chapter_1_3
     call chapter_1_4
+
     call chapter_2_1
     call chapter_2_2
     call chapter_2_3

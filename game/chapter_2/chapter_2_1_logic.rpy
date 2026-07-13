@@ -35,4 +35,4 @@ label chapter_2_1:
 
     n "Глава 2.1 завершена."
 
-    jump chapter_2_2
+    return

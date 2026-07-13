@@ -16,52 +16,44 @@ label prologue_4:
     call pro_4_assembly_lockpick
     call pro_4_storage_room
 
-    jump chapter_1_1
+    return
 
 
 label pro_4_search_first:
-    menu:
-        "Осмотреть стол":
-            call pro_4_search_desk
-            jump pro_4_search_first_check
+    while True:
+        menu:
+            "Осмотреть стол":
+                call pro_4_search_desk
 
-        "Осмотреть выдвижные ящики":
-            call pro_4_search_drawers
-            jump pro_4_search_first_check
+            "Осмотреть выдвижные ящики":
+                call pro_4_search_drawers
 
-        "Осмотреть подоконник":
-            call pro_4_search_windowsill
-            jump pro_4_search_first_check
+            "Осмотреть подоконник":
+                call pro_4_search_windowsill
 
+        menu:
+            "Продолжить поиски":
+                pass
 
-label pro_4_search_first_check:
-    menu:
-        "Продолжить поиски":
-            jump pro_4_search_first
-
-        "Хватит, ключа здесь нет":
-            return
+            "Хватит, ключа здесь нет":
+                return
 
 
 label pro_4_search_second:
-    menu:
-        "Проверить плошки цветов":
-            call pro_4_search_flowers
-            jump pro_4_search_second_check
+    while True:
+        menu:
+            "Проверить плошки цветов":
+                call pro_4_search_flowers
 
-        "Осмотреть школьную доску":
-            call pro_4_search_board
-            jump pro_4_search_second_check
+            "Осмотреть школьную доску":
+                call pro_4_search_board
 
-        "Заглянуть под коврик у входа":
-            call pro_4_search_mat
-            jump pro_4_search_second_check
+            "Заглянуть под коврик у входа":
+                call pro_4_search_mat
 
+        menu:
+            "Продолжить поиски":
+                pass
 
-label pro_4_search_second_check:
-    menu:
-        "Продолжить поиски":
-            jump pro_4_search_second
-
-        "Здесь тоже ничего нет":
-            return
+            "Здесь тоже ничего нет":
+                return

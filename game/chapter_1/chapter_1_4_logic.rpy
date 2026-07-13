@@ -28,7 +28,7 @@ label chapter_1_4:
     else:
         n "Леон покидает подвал и отправляется на поиски девочек..."
 
-    jump chapter_2_1
+    return
 
 
 label ch1_4_no_lamp_fight_sequence:
