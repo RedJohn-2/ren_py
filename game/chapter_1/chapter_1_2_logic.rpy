@@ -2,24 +2,10 @@ label chapter_1_2:
     scene bg corridor
     with dissolve
 
-    "Локация: Коридор"
 
-    if companion == "alice":
-        show alice smile at left
-        a "Смотри сколько кабинетов..."
-        a "Могут заглянем в них"
-    elif companion == "mari":
-        show mari smile at left
-        m "Смотри сколько кабинетов..."
-        m "Могут заглянем в них"
-    elif companion == "sylvia":
-        show sylvia smile at left
-        sy "Смотри сколько кабинетов..."
-        sy "Могут заглянем в них"
-    elif companion == "shinna":
-        show shinna smile at left
-        s "Смотри сколько кабинетов..."
-        s "Могут заглянем в них"
+    $ c_show("smile")
+    $ c_say("Смотри сколько кабинетов...")
+    $ c_say("Можем заглянем в них")
 
     l "Хорошо, думаю осмотреть несколько"
     l "Но предлагаю не терять много времени."
@@ -41,11 +27,9 @@ label chapter_1_2:
     else:
         $ max_rooms = 3
 
-    while True:
-        if visited_rooms >= max_rooms:
-            n "Мы осмотрели достаточно кабинетов."
-            call ch1_2_after_explore
-            return
+    while visited_rooms < max_rooms:
+        scene bg corridor
+        $ c_show("smile")
 
         menu:
             "Какой кабинет осмотреть?"
@@ -80,6 +64,5 @@ label chapter_1_2:
                 $ visited_rooms += 1
                 call ch1_2_men_toilet
 
-            "Пора идти дальше":
-                call ch1_2_after_explore
-                return
+    call ch1_2_after_explore
+    return

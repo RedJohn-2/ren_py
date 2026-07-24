@@ -5,7 +5,7 @@ label chapter_1_4:
     call ch1_4_scene1_gen_room
     call ch1_4_scene2_archive_with_genro
 
-    if has_lamp:
+    if has_item('kerosene_lamp'):
         menu:
             "Кинуть лампу в левый силуэт":
                 call ch1_4_throw_lamp_at_correct

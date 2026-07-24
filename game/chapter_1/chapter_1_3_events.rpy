@@ -6,7 +6,6 @@ label ch1_3_guard_post:
     scene bg guard_post
     with dissolve
 
-    "Локация: Пост охраны"
 
     n "В вестибюле царит тишина."
     n "Ни одной живой души..."
@@ -28,7 +27,7 @@ label ch1_3_guard_post:
     $ c_say("...")
 
     n "Девушка ищет ключи на посту охраны."
-    if has_lamp:
+    if has_item('kerosene_lamp'):
         n "Леон светит лампой."
     else:
         n "Леон светит зажигалкой."
@@ -87,7 +86,6 @@ label ch1_3_archive_pre:
     scene bg archive
     with dissolve
 
-    "Локация: Архив"
 
     $ c_show("smile")
     $ c_say("Так-с")
@@ -154,8 +152,7 @@ label ch1_3_carry:
         m "Да, Леон."
         m "Ноги меня если держат..."
         n "Леон хватает Мари на руки..."
-        $ leon_strength += 1
-        n "Сила Леона увеличена на 1."
+        $ stat_add('leon','strength',1)
     else:
         $ c_show("closed_frown")
         $ c_say("Ну уж нет.")
@@ -172,7 +169,7 @@ label ch1_3_archive_post:
 
     l "Просто замечательно."
 
-    if leon_intellect >= 2:
+    if group_meets('intellect', 2):
         $ c_show("smile")
         $ c_say("Похоже это что-то вроде кассовой книги.")
 
@@ -223,7 +220,6 @@ label ch1_3_generator_room:
     scene bg generator_room
     with dissolve
 
-    "Локация: Генераторная"
 
     $ c_show("frown")
     $ c_say("Вот он щиток и...")
@@ -291,7 +287,7 @@ label ch1_3_generator_room:
     l "Предохранитель?"
     l "Невероятное везение..."
     l "Прямо бог из машины..."
-    l "(громко) Девушка!"
+    l "[companion_display]!"
     l "Где же ты..."
 
     n "Леон возвращается к генератору..."

@@ -5,15 +5,14 @@ label chapter_2_2:
     scene bg corridor
     with dissolve
 
-    n "Локация: Коридор"
 
     if companion in companion_chars:
         $ companion_char = companion_chars[companion]
     else:
-        $ companion = "mari"
+        $ set_companion("mari")
         $ companion_char = m
 
-    show expression companion + " smile"
+    $ c_show("smile")
 
     companion_char "Леон, давай осмотрим эти кабинеты!"
     companion_char "Они нам по пути..."
@@ -27,37 +26,44 @@ label chapter_2_2:
     n "Также неподалеку находится шваберная и мастерская."
 
     $ rooms_visited = 0
+    $ _v_lit = False
+    $ _v_mus = False
+    $ _v_dra = False
+    $ _v_jan = False
+    $ _v_wor = False
     $ max_visits = 2
-    if has_map:
+    if has_item('map_floor_1'):
         $ max_visits = 3
 
-    while True:
-        if rooms_visited >= max_visits:
-            n "Вы осмотрели все, что могли в этот заход."
-            call ch2_2_continue
-            return
+    while rooms_visited < max_visits:
+        scene bg corridor
+        $ c_show("smile")
 
         menu:
-            "Кабинет литературы":
+            "Кабинет литературы" if not _v_lit:
+                $ _v_lit = True
                 call ch2_2_literature
                 $ rooms_visited += 1
 
-            "Кабинет музыки":
+            "Кабинет музыки" if not _v_mus:
+                $ _v_mus = True
                 call ch2_2_music
                 $ rooms_visited += 1
 
-            "Кабинет черчения":
+            "Кабинет черчения" if not _v_dra:
+                $ _v_dra = True
                 call ch2_2_drafting
                 $ rooms_visited += 1
 
-            "Шваберная":
+            "Шваберная" if not _v_jan:
+                $ _v_jan = True
                 call ch2_2_janitor
                 $ rooms_visited += 1
 
-            "Мастерская":
+            "Мастерская" if not _v_wor:
+                $ _v_wor = True
                 call ch2_2_workshop
                 $ rooms_visited += 1
 
-            "Продолжить путь":
-                call ch2_2_continue
-                return
+    call ch2_2_continue
+    return

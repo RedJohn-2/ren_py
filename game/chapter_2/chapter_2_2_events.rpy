@@ -7,7 +7,6 @@ label ch2_2_literature:
 
     show expression companion + " smile"
 
-    n "Локация: Кабинет литературы"
 
     l "Может зайдем в кабинет литературы?"
 
@@ -40,8 +39,7 @@ label ch2_2_literature:
         m "Ах... Искусство..."
         l "Да"
         l "Я кажется понимаю..."
-        n "Эмпатия Леона увеличивается на 1."
-        $ leon_empathy += 1
+        $ stat_add('leon','empathy',1)
     else:
         n "Леон и девушка проходят между рядами..."
         n "Но не замечают ничего интересного..."
@@ -57,7 +55,6 @@ label ch2_2_music:
 
     show expression companion + " smile"
 
-    n "Локация: Кабинет музыки"
 
     companion_char "О, кабинет музыки..."
     companion_char "Может зайдем?"
@@ -105,8 +102,7 @@ label ch2_2_music:
             l "Думаю, лучше не задавать лишних вопросов..."
             l "А вот аптечка лишней не будет."
 
-            $ has_medkit = True
-            n "Получена аптечка первой помощи!"
+            call acquire_item('medkit')
 
         "Сыграть по памяти — рискованный вариант":
             n "Леон пытается вспомнить мелодию..."
@@ -132,7 +128,6 @@ label ch2_2_drafting:
 
     show expression companion + " smile"
 
-    n "Локация: Кабинет черчения"
 
     l "Это что? Кабинет черчения?"
     l "Ни разу здесь не был..."
@@ -155,8 +150,6 @@ label ch2_2_drafting:
     l "Ну, не знаю..."
     l "Вот какая-то карта..."
 
-    $ has_map = True
-
     if companion == "shinna":
         show shinna smile
         s "Ох, Леон..."
@@ -168,14 +161,13 @@ label ch2_2_drafting:
         l "Ого"
         l "Никогда не понимал, как их читать..."
         l "Самое сложное всегда было найти себя на схеме..."
-        n "Организованность Леона увеличивается на 1."
-        $ leon_organization += 1
+        $ stat_add('leon','organization',1)
     else:
         companion_char "Что это?"
         companion_char "План эвакуации..."
         companion_char "Не думаю, что он нам понадобится..."
 
-    n "Получена карта первого этажа!"
+    call acquire_item('map_floor_1')
 
     l "Похоже, здесь больше ничего интересного..."
     l "Пойдем дальше..."
@@ -188,7 +180,6 @@ label ch2_2_janitor:
 
     show expression companion + " smile"
 
-    n "Локация: Шваберная"
 
     l "Какая-то темная комната..."
 
@@ -201,7 +192,7 @@ label ch2_2_janitor:
     companion_char "Мда..."
     companion_char "Ну и свалка здесь, конечно..."
 
-    if leon_organization >= 3:
+    if group_meets('organization', 3):
         l "Согласен..."
         l "Аж смотреть больно..."
         l "Пора навести порядок в этом бардаке."
@@ -213,8 +204,7 @@ label ch2_2_janitor:
         l "..."
         l "Да..."
         l "Конечно возьмем!"
-        $ has_fire_extinguisher = True
-        n "Получен огнетушитель!"
+        call acquire_item('fire_extinguisher')
     else:
         companion_char "Похоже, здесь ловить нечего..."
 
@@ -229,7 +219,6 @@ label ch2_2_workshop:
 
     show expression companion + " smile"
 
-    n "Локация: Мастерская"
 
     companion_char "Ух ты!"
     companion_char "Мастерская..."
@@ -261,8 +250,7 @@ label ch2_2_workshop:
         show sylvia smile blush
         sy "Ой..."
         sy "Прости..."
-        n "Сила Леона увеличивается на 1."
-        $ leon_strength += 1
+        $ stat_add('leon','strength',1)
     else:
         companion_char "Похоже, здесь ничего интересного..."
         companion_char "Давай поторопимся."
