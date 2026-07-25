@@ -26,6 +26,17 @@ label start:
     call chapter_2_1
     call chapter_2_2
     call chapter_2_3
+    call chapter_2_4
+
+    call chapter_3_1
+    call chapter_3_2
+    call chapter_3_3
+    call chapter_3_4
+
+    call chapter_4_1
+    call chapter_explore_floor2
+    call chapter_4_2
+    call chapter_4_3
 
     call demo_end
 

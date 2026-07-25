@@ -111,3 +111,20 @@ image bg music_2 = "images/bg/music_2.webp"
 image bg workshop = "images/bg/workshop.jpg"
 image bg workshop_2 = "images/bg/workshop_2.jpg"
 
+image bg math = Solid("#3a3a4a")
+image bg teachers_lounge = Solid("#4a3a2a")
+image bg cafeteria = Solid("#2a4a3a")
+
+image bg reception = Solid("#5a4a3a")
+image bg psychologist = Solid("#4a4a5a")
+image bg physics = Solid("#3a4a5a")
+image bg chemistry = Solid("#3a5a4a")
+image bg library = Solid("#4a3a5a")
+image bg reading_room = Solid("#5a5a3a")
+image bg geography = Solid("#3a5a5a")
+image bg journalism = Solid("#5a3a4a")
+image bg informatics = Solid("#4a5a5a")
+image bg rest_room = Solid("#5a4a5a")
+image bg social_studies = Solid("#5a5a4a")
+image bg history = Solid("#4a4a4a")
+

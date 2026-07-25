@@ -14,6 +14,9 @@ define ITEMS = {
     'fire_extinguisher':{'name': 'Огнетушитель',            'img': None},
     'lighter':          {'name': 'Зажигалка',               'img': None},
     'bat':              {'name': 'Бита',                    'img': None},
+    'water':            {'name': 'Бутылка воды',            'img': None},
+    'water_bucket':     {'name': 'Ведро воды',              'img': None},
+    'alcohol_bottle':   {'name': 'Бутылка спирта',          'img': None},
 }
 
 image item_kerosene_lamp    = "images/ui/items/kerosene_lamp.png"
