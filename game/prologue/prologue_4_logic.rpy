@@ -20,40 +20,40 @@ label prologue_4:
 
 
 label pro_4_search_first:
-    while True:
+    $ _s1_desk = False
+    $ _s1_drawers = False
+    $ _s1_win = False
+    while not (_s1_desk and _s1_drawers and _s1_win):
         menu:
-            "Осмотреть стол":
+            "Осмотреть стол" if not _s1_desk:
+                $ _s1_desk = True
                 call pro_4_search_desk
 
-            "Осмотреть выдвижные ящики":
+            "Осмотреть выдвижные ящики" if not _s1_drawers:
+                $ _s1_drawers = True
                 call pro_4_search_drawers
 
-            "Осмотреть подоконник":
+            "Осмотреть подоконник" if not _s1_win:
+                $ _s1_win = True
                 call pro_4_search_windowsill
-
-        menu:
-            "Продолжить поиски":
-                pass
-
-            "Хватит, ключа здесь нет":
-                return
+    return
 
 
 label pro_4_search_second:
-    while True:
+    $ _s2_flowers = False
+    $ _s2_board = False
+    $ _s2_mat = False
+    while not (_s2_flowers and _s2_board and _s2_mat):
         menu:
-            "Проверить плошки цветов":
+            "Проверить плошки цветов" if not _s2_flowers:
+                $ _s2_flowers = True
                 call pro_4_search_flowers
 
-            "Осмотреть школьную доску":
+            "Осмотреть школьную доску" if not _s2_board:
+                $ _s2_board = True
                 call pro_4_search_board
 
-            "Заглянуть под коврик у входа":
+            "Заглянуть под коврик у входа" if not _s2_mat:
+                $ _s2_mat = True
                 call pro_4_search_mat
-
-        menu:
-            "Продолжить поиски":
-                pass
-
-            "Здесь тоже ничего нет":
-                return
+    return

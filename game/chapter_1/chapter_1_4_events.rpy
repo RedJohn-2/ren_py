@@ -4,15 +4,11 @@
 
 define girl = Character('Девушка', color="#ffffff")
 
-default default_girl_strength = 2
-default default_girl_empathy = 2
-
 
 label ch1_4_scene1_gen_room:
     scene bg generator_room
     with dissolve
 
-    "Локация: Генераторная"
 
     n "Леон начинает пятиться назад..."
     n "Из тени на него начинают смотреть уродливые монстры..."
@@ -96,7 +92,7 @@ label ch1_4_werewolf_from_window:
     l "До сколько можно?"
 
     menu:
-        "Откуда в подвале окно???" if leon_intellect >= 2:
+        "Откуда в подвале окно???" if group_meets('intellect', 2):
             l "Откуда в подвале окно?"
             n "Оборотень влетает в Леона на большой скорости"
             n "И испаряется прямо перед его носом..."
@@ -105,21 +101,20 @@ label ch1_4_werewolf_from_window:
             l "Или иллюзия..."
             n "Леон бросает небольшой болтик в окно"
             n "Болтик отскакивает, а окно принимает облик стены..."
-        "Бросить керосиновую лампу в оборотня" if has_lamp:
+        "Бросить керосиновую лампу в оборотня" if has_item('kerosene_lamp'):
             n "Леон запускает керосиновую лампу в зверя"
             n "В полете оборотень превращается в благовонию..."
             n "Лампа пролетает до стены и разбивается..."
             l "Ох, надеюсь это был последний..."
             n "Леон достает из кармана зажигалку..."
             n "И вновь освещает себе дорогу..."
-            $ has_lamp = False
+            $ remove_item('kerosene_lamp')
         "Пятиться назад":
             n "От страха Леон резко отстраняется и пятится назад"
             n "Он спотыкается о разбросанные коробки и падает на спину"
             l "Мммм..."
             l "Блин, похоже ногу подвернул"
-            $ leon_strength -= 1
-            $ leon_injured = True
+            $ leon_take_wound()
 
     return
 
@@ -128,11 +123,10 @@ label ch1_4_scene2_archive_with_genro:
     scene bg archive
     with dissolve
 
-    "Локация: Архив"
 
     n "Леон пробирается в архив и замечает стоящую к нему спиной Девушку."
 
-    l "Девушка!"
+    l "[companion_display]!"
 
     n "Леон хватает Девушку за руку..."
     n "Она испаряется прямо на его глазах..."
@@ -141,6 +135,8 @@ label ch1_4_scene2_archive_with_genro:
 
     n "За спиной Леона появляется темный Силуэт Девушки"
     n "Выделяется лишь яркая желтая маска Они на лице"
+
+    $ set_possessed(companion, 'genro')
 
     l "Кто..."
     l "Кто ты? И что ты сделала с Девушкой?"
@@ -172,7 +168,7 @@ label ch1_4_hide_at_desk:
     n "Леон решает укрыться на посту выдачи"
     n "И обдумать дальнейшие действия..."
 
-    if has_diary:
+    if has_item('occult_diary'):
         l "Этот Дневник..."
         l "Должно быть он связан с масками"
         l "И всей этой чертовщиной..."
@@ -181,11 +177,11 @@ label ch1_4_hide_at_desk:
 
         n "{i}Маска Генро: Маска желтого цвета, с двумя черными рогами и черными деталями. Генерал Генро - повелитель иллюзий и обмана. Сама маска наделяет носителя способностями обмана и одурманивания.{/i}"
 
-        if leon_mystic >= 2:
+        if group_meets('mysticism', 2):
             n "{i}Маска Генро, как и все остальные маски связываются с носителем при помощи заклятия. Для разрыва этого заклятия используются особые артефакты.{/i}"
             n "{i}Для снятия маски Генро требуется Керосин.{/i}"
 
-            if leon_mystic >= 3:
+            if group_meets('mysticism', 3):
                 n "{i}«Демоны Генералы были изгнаны мною из этого мира... Но к сожалению я не смог изгнать их астральную форму. И чтобы не потерять над ними контроль, я заточил их астральную сущность в масках. Если Маски попадут в руки Предводителя... Он сможет вернуть Генералов из Преисподней. Допустить этого нельзя... Но если Маска сломается, то астральная форма демона станет бесконтрольной и возможно Предводителю тогда не удастся связать его с физическим обликом. Возможно...»{/i}"
                 l "Ну и чертовщина..."
                 l "Похоже все это не сказки..."
@@ -233,7 +229,7 @@ label ch1_4_throw_lamp_at_correct:
 
     n "Маска спадает с девушки..."
 
-    if leon_strength > default_girl_strength:
+    if stat_get('leon','strength') > stat_get(companion,'strength'):
         n "И раскалывается на 2 части..."
         $ mask_broken = True
 
@@ -250,7 +246,8 @@ label ch1_4_throw_lamp_at_correct:
     l "Сейчас вытащу тебя отсюда."
 
     $ girl_alive = True
-    $ has_lamp = False
+    $ mark_saved(companion)
+    $ remove_item('kerosene_lamp')
 
     return
 
@@ -261,7 +258,7 @@ label ch1_4_throw_lamp_at_wrong:
 
     genro "Ошибся, дорогой..."
 
-    $ has_lamp = False
+    $ remove_item('kerosene_lamp')
 
     return
 
@@ -350,7 +347,7 @@ label ch1_4_no_lamp_fail_demon:
     l "Как я мог не узнать тебя..."
     l "Среди этих подделок..."
 
-    $ leon_empathy -= 1
+    $ stat_add('leon','empathy',-1)
 
     return
 
@@ -389,7 +386,7 @@ label ch1_4_convince:
     l "Слышишь, Девушка..."
     l "Ты нужна мне!"
 
-    if leon_empathy > default_girl_empathy:
+    if stat_get('leon','empathy') > stat_get(companion,'empathy'):
         $ c_show("smile")
         $ c_say("Л-леон!")
 
@@ -407,6 +404,7 @@ label ch1_4_convince:
         l "Тише. Все позади. Ты в безопасности."
 
         $ girl_alive = True
+        $ mark_saved(companion)
     else:
         genro "Неееет!"
         genro "Ты потерял ее"
@@ -438,6 +436,7 @@ label ch1_4_convince:
         l "Держись... Пожалуйста..."
 
         $ girl_alive = False
+        $ mark_dead(companion)
 
     return
 
@@ -456,12 +455,12 @@ label ch1_4_push_shelving:
     n "..."
     n "Леон поднимает стеллаж..."
 
-    if leon_strength > default_girl_strength:
+    if stat_get('leon','strength') > stat_get(companion,'strength'):
         n "Маска слетает с девушки и раскалывается..."
         n "Девушка захлебывается кровью от полученных ран..."
 
         l "О нет, нет, нет"
-        l "Девушка!!!"
+        l "[companion_display]!!!"
 
         $ c_show("closed_frown")
         $ c_say("Л-леон...")
@@ -474,11 +473,12 @@ label ch1_4_push_shelving:
         l "Прости меня..."
 
         $ girl_alive = False
+        $ mark_dead(companion)
     else:
         n "Маска слетает с девушки"
         n "Девушка немного корчится от боли, но приходит в себя"
 
-        l "Девушка!"
+        l "[companion_display]!"
         l "Ты жива..."
 
         $ c_show("closed_frown")
@@ -514,7 +514,6 @@ label ch1_4_after_boss:
     scene bg generator_room
     with dissolve
 
-    "Локация: Генераторная"
 
     n "Леон возвращается в генераторную и осматривает коробки на стеллажах..."
 
@@ -553,7 +552,6 @@ label ch1_4_medbay:
     scene bg medbay
     with dissolve
 
-    "Локация: Медпункт"
 
     if girl_alive:
         n "Герои прибывают в медпункт"
@@ -565,7 +563,7 @@ label ch1_4_medbay:
         $ c_show("smile")
         $ c_say("Спасибо, Леон...")
 
-        if leon_injured:
+        if leon_wounds > 0:
             $ c_show("frown")
             $ c_say("Постой!")
             $ c_say("Твоя нога")
@@ -573,7 +571,7 @@ label ch1_4_medbay:
 
             n "Девушка накладывает бинт Леону"
 
-            $ leon_strength += 1
+            $ leon_heal_wound()
 
             l "Я как новенький!"
             l "Что бы я без тебя делал!"

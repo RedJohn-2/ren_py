@@ -2,7 +2,6 @@ label ch1_2_biology:
     scene bg biology
     with dissolve
 
-    "Локация: Кабинет биологии"
 
     l "Предлагаю зайти в кабинет биологии..."
 
@@ -41,8 +40,7 @@ label ch1_2_biology:
     l "А если серьезно, то не время для твоих легенд"
     l "Проблем итак хватает...."
 
-    n "Мистика Леона увеличивается на 1"
-    $ leon_mystic += 1
+    $ stat_add('leon','mysticism',1)
 
     l "Хорошо, думаю можем идти дальше..."
 
@@ -53,7 +51,6 @@ label ch1_2_laboratory:
     scene bg laboratory
     with dissolve
 
-    "Локация: Лаборантская"
 
     if companion == "alice":
         show alice smile at left
@@ -72,7 +69,7 @@ label ch1_2_laboratory:
     n "Куча каких-то бумажек, учебников и тетрадей"
     n "На рабочем столе помимо прочего стоит несколько микроскопов."
 
-    if leon_intellect >= 2:
+    if group_meets('intellect', 2):
         n "..."
         with dissolve
 
@@ -119,98 +116,43 @@ label ch1_2_women_toilet:
     scene bg women_toilet
     with dissolve
 
-    "Локация: Женский туалет"
-
-    if companion == "alice":
-        show alice smile at left
-        a "Может кто-то прячется в женском туалете?"
-    elif companion == "mari":
-        show mari smile at left
-        m "Может кто-то прячется в женском туалете?"
-    elif companion == "sylvia":
-        show sylvia smile at left
-        sy "Может кто-то прячется в женском туалете?"
-    elif companion == "shinna":
-        show shinna smile at left
-        s "Может кто-то прячется в женском туалете?"
+    $ c_show("smile")
+    $ c_say("Может кто-то прячется в женском туалете?")
 
     l "..."
     l "Хорошо"
     l "Давай проверим"
 
-    if companion == "alice":
-        a "Девочки?"
-        a "Есть кто-то?"
-    elif companion == "mari":
-        m "Девочки?"
-        m "Есть кто-то?"
-    elif companion == "sylvia":
-        sy "Девочки?"
-        sy "Есть кто-то?"
-    elif companion == "shinna":
-        s "Девочки?"
-        s "Есть кто-то?"
+    $ c_say("Девочки?")
+    $ c_say("Есть кто-то?")
 
     n "Девушка поочередно проверяет кабинки..."
     n "Никого..."
     n "Леон залип в свое отражение в зеркале"
 
-    if companion == "alice":
-        a "Леон, все в порядке?"
-    elif companion == "mari":
-        m "Леон, все в порядке?"
-    elif companion == "sylvia":
-        sy "Леон, все в порядке?"
-    elif companion == "shinna":
-        s "Леон, все в порядке?"
+    $ c_say("Леон, все в порядке?")
 
     l "Э, да..."
     l "Нашла что-то интересное?"
 
-    if has_lamp:
+    if has_item('kerosene_lamp'):
         if companion == "mari":
-            show mari smile blush
+            show mari happy
             m "Еще бы!"
             m "Это же моя заколка!"
             m "Должно быть уронила ее утром!"
             m "Как классно, что мы зашли сюда!"
             m "Спасибо Леон!"
         else:
-            if companion == "alice":
-                a "Ну не то чтобы..."
-                a "В углу валялась заколка."
-                a "Кажется ее выронила Мари"
-                a "Придержи у себя"
-            elif companion == "sylvia":
-                sy "Ну не то чтобы..."
-                sy "В углу валялась заколка."
-                sy "Кажется ее выронила Мари"
-                sy "Придержи у себя"
-            elif companion == "shinna":
-                s "Ну не то чтобы..."
-                s "В углу валялась заколка."
-                s "Кажется ее выронила Мари"
-                s "Придержи у себя"
-
-            show mari smile at right
-            m "Еще бы!"
-            m "Это же моя заколка!"
-            m "Должно быть уронила ее утром!"
-            m "Как классно, что мы зашли сюда!"
-            m "Спасибо Леон!"
+            $ c_show("smile")
+            $ c_say("Ну не то чтобы...")
+            $ c_say("В углу валялась заколка.")
+            $ c_say("Кажется ее выронила Мари")
+            $ c_say("Придержи у себя")
+            call acquire_item('mari_hairclip')
     else:
-        if companion == "alice":
-            a "Особо ничего ничего"
-            a "Думаю может идти дальше"
-        elif companion == "mari":
-            m "Особо ничего ничего"
-            m "Думаю может идти дальше"
-        elif companion == "sylvia":
-            sy "Особо ничего ничего"
-            sy "Думаю может идти дальше"
-        elif companion == "shinna":
-            s "Особо ничего ничего"
-            s "Думаю может идти дальше"
+        $ c_say("Особо ничего ничего")
+        $ c_say("Думаю можно идти дальше")
 
     return
 
@@ -219,7 +161,6 @@ label ch1_2_robotics:
     scene bg robotics
     with dissolve
 
-    "Локация: Кабинет кружка робототехники"
 
     l "Это кружок робототехники?"
     l "Может зайдем?"
@@ -290,8 +231,7 @@ label ch1_2_robotics:
 
     l "Пожалуй, я начинаю понимать, почему ты так любишь физику."
 
-    n "Интеллект Леона увеличивается на 1."
-    $ leon_intellect += 1
+    $ stat_add('leon','intellect',1)
 
     l "Думаю здесь больше ничего интересного..."
     l "Можем идти дальше..."
@@ -303,7 +243,6 @@ label ch1_2_wardrobe:
     scene bg wardrobe
     with dissolve
 
-    "Локация: Гардероб"
 
     l "Давай проверим, что в гардеробе?"
 
@@ -325,7 +264,7 @@ label ch1_2_wardrobe:
 
     l "Похоже на то..."
 
-    if leon_organization >= 2:
+    if group_meets('organization', 2):
         if companion == "alice":
             a "Думаю было бы не плохо взять их и отнести в потерянные вещи"
         elif companion == "mari":
@@ -358,20 +297,19 @@ label ch1_2_wardrobe:
         n "Леон надевает пальто на девушку..."
 
         if companion == "alice":
-            show alice smile blush
-            a "(смущенно) ..."
+            show alice worried
+            a "..."
         elif companion == "mari":
-            show mari smile blush
-            m "(смущенно) ..."
+            show mari worried
+            m "..."
         elif companion == "sylvia":
-            show sylvia smile blush
-            sy "(смущенно) ..."
+            show sylvia frown
+            sy "..."
         elif companion == "shinna":
-            show shinna smile blush
-            s "(смущенно) ..."
+            show shinna worried
+            s "..."
 
-        n "Эмпатия Леона увеличивается на 1."
-        $ leon_empathy += 1
+        $ stat_add('leon','empathy',1)
 
     l "Не будем терять времени, пойдем дальше?"
 
@@ -382,7 +320,6 @@ label ch1_2_men_toilet:
     scene bg men_toilet
     with dissolve
 
-    "Локация: Мужской туалет"
 
     l "Мужской туалет..."
 
@@ -407,7 +344,7 @@ label ch1_2_men_toilet:
         s "Я туда не пойду..."
         s "Да и вряд ли кто из девочек решит там прятаться..."
 
-    if has_lamp:
+    if has_item('kerosene_lamp'):
         if companion == "alice":
             a "Но если хочешь, можешь оставить мне лампу и..."
             a "Только возвращайся скорее..."
@@ -421,18 +358,17 @@ label ch1_2_men_toilet:
             s "Но если хочешь, можешь оставить мне лампу и..."
             s "Только возвращайся скорее..."
 
-        $ has_lamp = False
+        $ remove_item('kerosene_lamp')
 
         n "Леон оставляет девушке лампу"
         n "И берет в руки зажигалку."
 
-        l "(Чтож...)"
-        l "(Довольно пустовато...)"
-        l "(Так, а это что?)"
-        l "(График уборки санузла...)"
+        l "[[Чтож...]"
+        l "[[Довольно пустовато...]"
+        l "[[Так, а это что?]"
+        l "[[График уборки санузла...]"
 
-        n "Организованность Леона увеличивается на 1"
-        $ leon_organization += 1
+        $ stat_add('leon','organization',1)
 
         l "Так-с"
         l "Ничего особо интересного"
@@ -449,7 +385,6 @@ label ch1_2_after_explore:
     scene bg corridor
     with dissolve
 
-    "Локация: Коридор"
 
     l "Поспешим в Генераторную?"
 

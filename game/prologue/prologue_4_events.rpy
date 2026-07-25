@@ -5,7 +5,6 @@ label pro_4_assembly_setup:
     scene bg assembly_hall
     with dissolve
 
-    "Локация: Актовый зал"
 
     n "В актовом зале царит кромешная тьма..."
 
@@ -33,7 +32,8 @@ label pro_4_assembly_setup:
     l "Так что помочь тебе сейчас — самое малое, что мы можем сделать."
     l "Не переживай по таким мелочам)"
 
-    s "(смущенно) )"
+    show shinna worried
+    s ")"
 
     n "Леон наводит свет фонарика на выключатель"
     n "Шинна щелкает выключатель"
@@ -47,8 +47,9 @@ label pro_4_assembly_setup:
 
     n "Леон и Сильвия берутся передвигать столы и стулья"
 
-    show sylvia smile blush at left
-    sy "(смущенно) Леон, я хотела сказать, что очень рада"
+    hide shinna
+    show sylvia frown at sprite_center
+    sy "Леон, я хотела сказать, что очень рада"
     sy "Что могу помочь школьному совету и"
     sy "Тебе ... в частности"
     sy "Ты всегда был очень добр ко мне"
@@ -61,8 +62,8 @@ label pro_4_assembly_setup:
     l "И еще..."
     l "Я думаю, Шинна тоже очень ценит твою помощь."
 
-    show sylvia smile blush
-    sy "(смущенно) ..."
+    show sylvia frown
+    sy "..."
 
     n "Передвинув парты и стулья, Леон предлагает Сильвии отдохнуть"
 
@@ -161,7 +162,6 @@ label pro_4_theater_intro:
     scene bg theater_room
     with dissolve
 
-    "Локация: Кабинет Театрального кружка"
 
     show shinna closed smile blush
     s "Ой, Леон"
@@ -227,8 +227,8 @@ label pro_4_search_mat:
 
 
 label pro_4_theater_outro:
-    show shinna smile
-    s "(радостно) Ладно прекрати)"
+    show shinna confident
+    s "Ладно прекрати)"
 
     l "А может позвонить главе кружка?"
 
@@ -248,8 +248,8 @@ label pro_4_theater_outro:
     mk "Упс..."
     mk "Кажется я случайно прихватила ключик домой..."
 
-    show shinna frown
-    s "(недовольно) Микки, это очень безответственно"
+    show shinna neutral
+    s "Микки, это очень безответственно"
     s "Как главе клуба, тебе следует ответственнее относиться к своим обязанностям"
     s "Особенно учитывая, что на носу такое важное мероприятие..."
 
@@ -257,9 +257,9 @@ label pro_4_theater_outro:
 
     l "А может мы просто вскроем замок с помощью шпильки?"
 
-    s "(Ха-ха, отличное решение)"
-    s "(Это же взлом)"
-    s "(Ну хотя...)"
+    s "[[Ха-ха, отличное решение]"
+    s "[[Это же взлом]"
+    s "[[Ну хотя...]"
     show shinna smile
     s "Замечательное решение, Леон!"
 
@@ -272,14 +272,13 @@ label pro_4_assembly_lockpick:
     scene bg assembly_hall
     with dissolve
 
-    "Локация: Актовый зал"
 
     show shinna frown
     s "Так, всем внимание!"
     s "Ключей от подсобки нет"
     s "Замок придется вскрывать шпилькой."
 
-    show alice smile at left
+    show alice smile at sprite_left
     a "Отлично, президент!"
 
     n "Алиса вытаскивает шпильку из волос"
@@ -287,14 +286,14 @@ label pro_4_assembly_lockpick:
 
     a "Сезам откройся!"
 
-    show shinna smile at right
+    show shinna smile at sprite_right
     s "Алиса, потрясающе!"
 
-    show mari smile at left
+    show mari smile at sprite_center
     m "Алиса-тян, это очень круто!"
 
-    show alice smile
-    a "(радостно) Ничего сложного..."
+    show alice happy
+    a "Ничего сложного..."
 
     n "Группа проходит в подсобку"
 
@@ -305,7 +304,6 @@ label pro_4_storage_room:
     scene bg storage_room
     with dissolve
 
-    "Локация: Подсобка"
 
     n "В подсобке тускло мигающая лампочка освещает реквизит и декорации к балу"
 
@@ -329,8 +327,8 @@ label pro_4_storage_room:
     n "У Алисы от страха затряслись колени"
 
     show alice closed frown blush at left
-    a "(Может сбежать?)"
-    a "(Нет, нет, нет. Лучше держаться вместе с остальными...)"
+    a "[[Может сбежать?]"
+    a "[[Нет, нет, нет. Лучше держаться вместе с остальными...]"
 
     l "Здесь есть что-то еще..."
     l "Какой-то дневник?"
@@ -343,8 +341,8 @@ label pro_4_storage_room:
     show helena opensmile
     h "Попробуй прочесть что-то!"
 
-    show alice closed frown blush at left
-    a "(испуганно) Может лучше не стоит?.."
+    show alice worried
+    a "Может лучше не стоит?.."
 
     n "Леон решает прочесть несколько предложений"
     n "И удивительным образом он в точности произносит заклинание"
@@ -369,6 +367,13 @@ label pro_4_storage_room:
     s "Что это было???"
 
     n "В подсобке появляется Демонический силуэт!"
+
+    hide shinna
+    hide mari
+    hide helena
+    hide alice
+    hide sylvia
+    show leader astral at sprite_center
 
     pred "Я благодарен вам за освобождение..."
     pred "Но вас это не спасет"

@@ -6,7 +6,7 @@ label chapter_1_3:
 
     call ch1_3_archive_pre
 
-    if leon_strength >= 2:
+    if group_meets('strength', 2):
         call ch1_3_book_fall_strong
     else:
         call ch1_3_book_fall_weak

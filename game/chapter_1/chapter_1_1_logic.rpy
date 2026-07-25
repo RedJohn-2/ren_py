@@ -5,7 +5,6 @@ label chapter_1_1:
     scene bg storage_room
     with dissolve
 
-    "Локация: Подсобка"
 
     n "В полной темноте Леон лишь слышит визги девушек."
     n "С некоторыми из них он сталкивается плечами."
@@ -19,12 +18,11 @@ label chapter_1_1:
 
     menu:
         "Выбежать в коридор, попытаться остановить девочек":
-            $ companion = renpy.random.choice(['alice', 'mari', 'shinna'])
+            $ set_companion(renpy.random.choice(['alice', 'mari', 'shinna']))
             call ch1_1_run_to_corridor
 
         "Не паниковать, остаться в подсобке":
-            $ companion = 'sylvia'
-            $ has_lamp = True
+            $ set_companion('sylvia')
             call ch1_1_stay_in_storage
 
     call ch1_1_unite

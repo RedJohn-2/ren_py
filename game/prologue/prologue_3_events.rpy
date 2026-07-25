@@ -5,17 +5,14 @@ label pro_3_corridor_meeting:
     scene bg corridor
     with dissolve
 
-    "Локация: Коридор"
-
-    show shinna at left
+    show shinna confident at sprite_left
     s "Тихо, кажется кто-то идет"
 
-    show alice closed frown blush at right
-    a "(Испуганно) ..."
+    show alice worried at sprite_right
+    a "..."
 
     n "Шинна гасит фонарик..."
 
-    show helena smile
     h "Можешь все же зайдем в кабинет ненадолго?"
     h "Завтра нужно опубликовать новый выпуск"
     h "А материала кот наплакал"
@@ -24,12 +21,14 @@ label pro_3_corridor_meeting:
     n "Девушки заходят за угол"
     n "Шинна резко включает фонарик и светит в глаза"
 
+    hide alice
+    show helena smile at sprite_right
     h "Ауч!"
 
-    show shinna frown
+    show shinna angry
     s "Не слишком ли поздно для школьных прогулок?"
 
-    show sylvia smile blush
+    show sylvia smile blush at sprite_center
     sy "Ох, президент"
     sy "Прошу прошения"
     sy "На носу соревнования"
@@ -38,16 +37,18 @@ label pro_3_corridor_meeting:
     l "Сильвия, ты большая молодец"
     l "Не сомневаюсь, что ты отлично выступишь!"
 
-    show sylvia closed smile blush
-    sy "(смущенно) Спасибо, Леон..."
+    show sylvia frown
+    sy "Спасибо, Леон..."
 
     s "Ну а ты Хелена?"
     s "У тебя тоже неожиданно проснулась любовь к дзюдо?"
 
+    show helena smile
     h "Ну, скажем так.."
     h "Некоторый спортивный интерес присутствует"
     h "Правда не к дзюдо..."
 
+    show shinna confident
     s "Так или иначе ночные прогулки по школе запрещены"
     s "Если, конечно, это не согласовано с советом или с кем-то из учителей"
 
@@ -63,20 +64,22 @@ label pro_3_corridor_meeting:
     show shinna smile
     s "Сильвия"
     s "Можешь считать, что твои вечерние тренировки согласованы"
-    s "Только убедись, пожалуйста, что они не пересекаются с другими кружками"
+    s "Только убедитесь, пожалуйста, что они не пересекаются с другими кружками"
 
     sy "Спасибо большое, президент"
 
-    show mari smile
+    hide sylvia
+    show mari smile at sprite_center
     m "О, Шинна-тян, очень добра и рассудительна..."
 
+    show helena smile
     h "Раз уж на то пошло"
     h "Можно ли пару раз в неделю тоже посещать спортивный зал и, скажем.."
     h "Кабинет биологии..."
     h "Исключительно в образовательных целях"
 
-    show shinna frown
-    s "(злостно) ..."
+    show shinna worried
+    s "..."
     s "Да, Хелена, тебе тоже можно"
     s "Но только без проникновения в закрытые кабинеты!"
 
@@ -89,15 +92,16 @@ label pro_3_corridor_meeting:
     h "Кстати.."
     h "У вас есть фотография в купальнике?"
 
-    show shinna open
-    s "(озадаченно) А теперь прошу извинить, мы опаздываем"
+    show shinna worried
+    s "А теперь прошу извинить, мы опаздываем"
     s "Нужно еще подготовить актовый зал..."
 
     l "Ах, да."
     l "Хелена, Сильви, приятно было повидаться!"
 
-    show sylvia closed smile blush
-    sy "(смущенно) Ммм.."
+    hide mari
+    show sylvia frown at sprite_center
+    sy "Ммм.."
     sy "Может вам нужна помощь?"
     sy "Вы ведь готовитесь к балу-маскараду?.."
     sy "Я на сегодня освободилась, мне как раз нечем заняться..."
@@ -105,7 +109,7 @@ label pro_3_corridor_meeting:
     s "Неудобно просить"
     s "Но если честно, очень выручишь"
 
-    show mari smile
+    show mari smile at sprite_left
     m "Ура, Сильви-тян с нами!"
     m "Будет весело!"
 
@@ -113,31 +117,40 @@ label pro_3_corridor_meeting:
     l "Правда мы взяли ужин только на четверых"
     l "Но я могу поделиться своим"
 
-    show alice shout
-    a "(возмущенно) Х..."
+    show alice angry at sprite_left
+    a "Х..."
 
     show sylvia smile
-    sy "(радостно) ..."
+    sy "..."
 
-    h "(Так-с)"
-    h "(Вечер подходит к концу, а материала для выпуска все еще нет...)"
+    hide shinna
+    hide mari
+    hide alice
+    hide sylvia
+    show helena smile at sprite_center
+    h "[[Так-с]"
+    h "[[Вечер подходит к концу, а материала для выпуска все еще нет...]"
     h "Шинна, вы не откажетесь и от моей помощи?"
     h "Если что ужин у меня с собой, можете не беспокоиться"
 
-    show shinna smile
+    hide helena
+    show shinna smile at sprite_left
     s "Хелена, анализируя твою задумчивость, можно предположить, что у тебя есть какой-то личный интерес"
     s "Но нам действительно не помешает твоя помощь"
     s "Так что конечно я не вижу никаких причин отказывать тебе"
 
-    sy "(О, президент видит людей на сквозь)"
-    sy "(Надеюсь она не поняла в чем мой... личный интерес)"
+    hide shinna
+    show sylvia smile blush at sprite_center
+    sy "[[О, президент видит людей насквозь]"
+    sy "[[Надеюсь она не поняла в чем мой... личный интерес]"
 
+    hide sylvia
     n "Группа отправляется по темному коридору к актовому залу"
     n "Алиса прижимается к Леону"
 
     l "Алиса? Все хорошо?"
 
-    show alice closed frown blush
+    show alice worried at sprite_center
     a "Да..."
     a "Электродинамика!.."
     a "На чем мы остановились?"

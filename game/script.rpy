@@ -11,6 +11,8 @@ define e = Character('Эйлин', color="#c8ffc8")
 
 # Игра начинается здесь:
 label start:
+    show screen group_panel
+
     call prologue_1
     call prologue_2
     call prologue_3
@@ -24,5 +26,32 @@ label start:
     call chapter_2_1
     call chapter_2_2
     call chapter_2_3
+    call chapter_2_4
 
+    call chapter_3_1
+    call chapter_3_2
+    call chapter_3_3
+    call chapter_3_4
+
+    call chapter_4_1
+    call chapter_explore_floor2
+    call chapter_4_2
+    call chapter_4_3
+
+    call demo_end
+
+    return
+
+
+label leon_game_over:
+    scene black with dissolve
+    centered "Силы Леона иссякли..."
+    centered "Игра окончена."
+    $ renpy.full_restart()
+
+
+label demo_end:
+    scene black with dissolve
+    centered "Конец доступной части."
+    centered "Продолжение следует..."
     return
