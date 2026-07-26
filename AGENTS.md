@@ -292,3 +292,14 @@ action Play("music", "track.ogg")
 - Russian locale — keep UI text in Russian
 - All custom game logic goes in `script.rpy` or new `.rpy` files in `game/`
 - Do not write coments 
+
+## Testing
+- Tests live in `game/testcases.rpy` (Ren'Py built-in `testsuite`/`testcase`).
+- **When you change game logic, UI, or add chapters, you MUST add/update a test
+  and run the suite until it passes.**
+- Run (from repo root):
+  ```
+  /home/vadim/Загрузки/renpy-8.5.3-sdkarm/renpy.sh . test
+  ```
+  Tests need a real display (`DISPLAY=:0`); exit code 0 = pass.
+- Full guide (DSL, gotchas, test list): see [docs/testing.md](docs/testing.md).
