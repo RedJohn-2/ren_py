@@ -1,8 +1,8 @@
-image bg wide_panorama = Composite(
-    (3840, 1080),
-    (0, 0), Transform("images/bg/corridor.jpg", xsize=1920, ysize=1080, fit="fill"),
-    (1920, 0), Transform("images/bg/gym.jpg", xsize=1920, ysize=1080, fit="fill"),
-)
+define pan_range = 240
+
+image bg wide_panorama:
+    "images/i.jpeg"
+    zoom 4
 
 
 transform pan_hold(x=0):
@@ -52,7 +52,7 @@ init python:
 
 
 screen keyboard_panorama():
-    default adj = ui.adjustment(range=1920, value=0, adjustable=True)
+    default adj = ui.adjustment(range=pan_range, value=0, adjustable=True)
 
     viewport:
         xsize 1920
@@ -62,7 +62,7 @@ screen keyboard_panorama():
         edgescroll (200, 600)
         add "bg wide_panorama"
 
-    timer 0.02 repeat True action Function(keyboard_pan_tick, adj)
+    timer 0.02 repeat True action Function(keyboard_pan_tick, adj, 5)
 
     text _("Зажмите Ф (A) — влево, В (D) — вправо"):
         xalign 0.5
@@ -80,28 +80,25 @@ label demo_panorama:
     scene bg wide_panorama at pan_hold(0)
     with dissolve
 
-    n "Это широкая панорама — два фона, склеенных в один холст 3840×1080."
-    n "Сейчас видно только левую половину (коридор). Шов спрятан за правым краем экрана."
+    # n "Это широкоформатный фон 2:1, увеличенный по высоте до 1080 — итоговый холст 2160×1080."
+    # n "Экран 1920×1080, значит камеру можно сдвинуть по горизонтали на 240 пикселей."
 
-    show bg wide_panorama at pan_scan(0, 1920, 6.0)
-    n "Запускаем функцию поворота — pan_scan плавно сдвигает окно просмотра вправо..."
-    n "Мы пересекли шов между двумя изображениями."
-    n "Теперь на экране правая половина (спортзал)."
+    # show bg wide_panorama at pan_scan(0, pan_range, 6.0)
+    # n "Запускаем функцию поворота — pan_scan плавно сдвигает окно просмотра вправо..."
+    # n "Теперь видна та часть фона, что раньше уходила за правый край."
 
-    show bg wide_panorama at pan_hold(1920)
-    n "Можно зафиксировать вид на любом участке через pan_hold(x)."
+    # show bg wide_panorama at pan_hold(pan_range)
+    # n "Можно зафиксировать вид на любом участке через pan_hold(x)."
 
-    show bg wide_panorama at pan_scan(1920, 0, 6.0)
-    n "И так же вернуть камеру обратно — pan_scan с теми же координатами в обратную сторону."
+    # show bg wide_panorama at pan_scan(pan_range, 0, 6.0)
+    # n "И так же вернуть камеру обратно — pan_scan в обратную сторону."
 
-    show bg wide_panorama at pan_hold(0)
+    # show bg wide_panorama at pan_hold(0)
 
     n "А теперь — интерактивный режим: перетаскивайте фон мышью или подведите курсор к краям."
     call screen panorama_explore
 
-    n "Теперь управление с клавиатуры: зажмите Ф (A) для поворота влево и В (D) для поворота вправо."
-    call screen keyboard_panorama
 
-    scene black with dissolve
-    n "Демонстрация панорамы завершена."
+    # scene black with dissolve
+    # n "Демонстрация панорамы завершена."
     return
